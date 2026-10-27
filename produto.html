@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Game Mania | Produto</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080808;
+  --panel:#111;
+  --panel2:#151515;
+  --border:#303030;
+  --text:#f5f5f5;
+  --muted:#a5a5a5;
+  --green:#22c55e;
+}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+button{font:inherit}
+a{color:inherit;text-decoration:none}
+
+.header{
+  height:72px;background:#050505;border-bottom:1px solid #222;
+  display:flex;align-items:center;gap:30px;padding:0 38px;
+  position:sticky;top:0;z-index:20
+}
+.logo-link{display:flex;align-items:center;flex-shrink:0}
+.logo{width:105px;height:68px;object-fit:contain;display:block}
+.nav{display:flex;gap:28px;font-size:14px;white-space:nowrap}
+.nav a:hover{color:#bbb}
+.search{margin-left:auto;width:min(430px,30vw);height:43px;border:1px solid #333;background:#1b1b1b;border-radius:8px;color:#fff;padding:0 15px;font-size:14px}
+.header-link{font-size:14px;white-space:nowrap}
+.cart{font-size:14px;white-space:nowrap}
+
+.container{max-width:1420px;margin:0 auto;padding:24px 38px 50px}
+.breadcrumb{font-size:13px;color:#999;margin-bottom:26px}
+.breadcrumb span{color:#fff}
+
+.product-grid{
+  display:grid;
+  grid-template-columns:minmax(430px,1.35fr) minmax(340px,.78fr) minmax(300px,.62fr);
+  gap:26px;align-items:start
+}
+
+.gallery{display:grid;grid-template-columns:84px 1fr;gap:18px}
+.thumbs{display:flex;flex-direction:column;gap:10px}
+.thumb{
+  width:84px;height:84px;border-radius:8px;border:1px solid #333;
+  background:#111;overflow:hidden;cursor:pointer;padding:0
+}
+.thumb.active{border:2px solid #fff}
+.thumb img{width:100%;height:100%;object-fit:cover}
+
+.main-image-wrap{position:relative;height:495px;border-radius:9px;overflow:hidden;background:#111;border:1px solid #292929}
+.main-image{width:100%;height:100%;object-fit:cover}
+.arrow{
+  position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;
+  border:0;border-radius:50%;background:rgba(0,0,0,.75);color:#fff;
+  font-size:24px;cursor:pointer
+}
+.arrow.left{left:14px} .arrow.right{right:14px}
+.expand{position:absolute;right:14px;bottom:14px;width:38px;height:38px;border:0;border-radius:8px;background:rgba(0,0,0,.75);color:#fff;cursor:pointer}
+
+.gallery-bottom{grid-column:2;display:flex;gap:8px;margin-top:8px;overflow:hidden}
+.gallery-bottom .thumb{flex:0 0 100px;width:100px;height:72px}
+
+.badge{display:inline-block;background:#fff;color:#111;border-radius:5px;padding:5px 9px;font-size:11px;font-weight:bold;margin-bottom:12px}
+.rank{color:#bbb;font-size:13px;margin-left:8px}
+h1{font-size:32px;line-height:1.15;margin-bottom:12px}
+.meta{color:#999;font-size:15px;margin-bottom:16px}
+.stars{font-size:20px;letter-spacing:1px;margin-bottom:22px}
+.stars small{font-size:14px;color:#bbb;letter-spacing:0}
+.description{font-size:15px;line-height:1.55;color:#ddd;margin-bottom:24px}
+.details{display:grid;gap:17px}
+.detail{display:grid;grid-template-columns:38px 1fr;align-items:center}
+.detail-icon{font-size:25px;color:#ddd}
+.detail-label{color:#999;font-size:13px;margin-bottom:3px}
+.detail-value{font-size:15px}
+
+.buy-card{
+  background:linear-gradient(145deg,#161616,#0d0d0d);
+  border:1px solid #353535;border-radius:9px;padding:20px
+}
+.old-price{color:#777;text-decoration:line-through;font-size:15px;margin-bottom:5px}
+.price-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.price{font-size:29px;font-weight:bold}
+.discount{border:1px solid #777;border-radius:5px;padding:4px 8px;font-size:12px;font-weight:bold}
+.seller{font-size:14px;color:#bbb;margin-bottom:20px}
+.payment{
+  border:1px solid #444;border-radius:8px;padding:15px;margin-bottom:8px;
+  cursor:pointer
+}
+.payment.selected{border:1px solid #fff}
+.payment-title{font-weight:bold;margin-bottom:6px}
+.payment-price{font-size:17px;font-weight:bold}
+.payment-sub{font-size:13px;color:#aaa;margin-top:4px}
+.buy-now,.add-cart{
+  width:100%;height:54px;border-radius:7px;cursor:pointer;font-weight:bold;
+  font-size:16px;margin-top:9px
+}
+.buy-now{background:#fff;color:#111;border:0}
+.add-cart{background:transparent;color:#fff;border:1px solid #555}
+.buy-now:hover{background:#e8e8e8}
+.add-cart:hover{background:#1a1a1a}
+.shipping{border-top:1px solid #333;margin-top:18px;padding-top:15px}
+.ship-item{display:flex;gap:12px;padding:10px 0}
+.ship-icon{font-size:22px}
+.ship-title{font-weight:bold;font-size:14px}
+.ship-text{font-size:13px;color:#aaa;margin-top:3px}
+.stock{
+  border:1px solid #444;border-radius:7px;padding:14px;margin-top:13px;
+  display:flex;justify-content:space-between;align-items:center
+}
+.stock-green{color:var(--green);font-size:13px;margin-top:6px}
+.qty{display:flex;align-items:center;gap:10px}
+.qty button{width:29px;height:29px;border:0;border-radius:6px;background:#444;color:#fff;cursor:pointer}
+.qty span{min-width:16px;text-align:center}
+
+.wishlist{text-align:center;color:#ddd;font-size:13px;padding-top:17px;cursor:pointer}
+.header-link span,.cart span{font-weight:700;color:#fff}
+
+.recommend{margin-top:32px;border:1px solid #2d2d2d;border-radius:9px;background:#111;padding:16px}
+.recommend h2{font-size:21px;margin-bottom:12px}
+.rec-list{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.rec{display:grid;grid-template-columns:78px 1fr 35px;gap:11px;align-items:center;border:1px solid #2c2c2c;background:#151515;border-radius:8px;padding:6px}
+.rec img{width:78px;height:88px;object-fit:cover;border-radius:6px}
+.rec-name{font-size:13px;margin-bottom:7px}
+.rec-platform{font-size:12px;color:#999;margin-bottom:6px}
+.rec-price{font-size:14px;font-weight:bold}
+.rec button{width:32px;height:32px;border-radius:50%;border:1px solid #555;background:transparent;color:#fff;cursor:pointer}
+
+.toast{position:fixed;right:24px;bottom:24px;background:#fff;color:#111;padding:14px 18px;border-radius:8px;font-size:14px;font-weight:bold;opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s;z-index:50}
+.toast.show{opacity:1;transform:translateY(0)}
+
+@media(max-width:1100px){
+  .product-grid{grid-template-columns:1fr 1fr}
+  .buy-card{grid-column:1/-1}
+  .rec-list{grid-template-columns:repeat(2,1fr)}
+  .search{width:250px}
+}
+@media(max-width:760px){
+  .header{height:auto;min-height:70px;padding:8px 15px;gap:14px;flex-wrap:wrap}
+  .logo{width:90px;height:58px}
+  .nav,.header-link{display:none}
+  .search{order:3;width:100%;margin:0}
+  .container{padding:18px 14px 40px}
+  .product-grid{display:block}
+  .gallery{display:block}
+  .thumbs{display:none}
+  .main-image-wrap{height:330px}
+  .gallery-bottom{grid-column:auto;margin-top:8px}
+  .gallery-bottom .thumb{width:72px;height:58px;flex-basis:72px}
+  .info{margin-top:24px}
+  h1{font-size:26px}
+  .buy-card{margin-top:24px}
+  .rec-list{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <!-- LOGO DA IMAGEM ENVIADA, SEM A BORDA BRANCA -->
+  <a href="index.html" class="logo-link" aria-label="Voltar para a página inicial"><img class="logo" alt="Game Mania" src="data:image/png;base64,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">
+  </a>
+
+  <nav class="nav">
+    <a href="index.html">Explorar ▾</a>
+    <a href="index.html">Categorias ▾</a>
+    <a href="index.html">Plataformas ▾</a>
+    <a href="index.html">Mais ▾</a>
+  </nav>
+
+  <input class="search" id="search" type="search" placeholder="Buscar na loja...">
+
+  <a class="header-link" href="wishlist.html">♡ Lista de desejos (<span id="wishlistCount">0</span>)</a>
+  <a class="cart" href="cart.html">🛒 Carrinho (<span id="cartCount">0</span>)</a>
+</header>
+
+<main class="container">
+
+  <div class="breadcrumb">
+    Início › Jogos › <span id="breadcrumbName">Aventura</span> › <span id="breadcrumbProduct">Ghost of Tsushima</span>
+  </div>
+
+  <section class="product-grid">
+
+    <!-- GALERIA -->
+    <section class="gallery">
+      <div class="thumbs" id="thumbs"></div>
+
+      <div>
+        <div class="main-image-wrap">
+          <img id="mainImage" class="main-image" src="" alt="">
+          <button class="arrow left" onclick="changeImage(-1)">‹</button>
+          <button class="arrow right" onclick="changeImage(1)">›</button>
+          <button class="expand" onclick="alert('Aqui você pode abrir a imagem em tela cheia.')">⛶</button>
+        </div>
+
+        <div class="gallery-bottom" id="galleryBottom"></div>
+      </div>
+    </section>
+
+    <!-- INFORMAÇÕES -->
+    <section class="info">
+      <div>
+        <span class="badge" id="badge">MAIS VENDIDO</span>
+        <span class="rank" id="rank">7º em Aventura</span>
+      </div>
+
+      <h1 id="productName">Ghost of Tsushima VERSÃO DO DIRETOR</h1>
+
+      <div class="meta">
+        <span id="developer">Sucker Punch Productions</span>
+        &nbsp; | &nbsp;
+        <span id="platform">PlayStation 5</span>
+      </div>
+
+      <div class="stars">
+        ★★★★★ <small><b id="rating">4.9</b> (2.933 avaliações)</small>
+      </div>
+
+      <p class="description" id="description"></p>
+
+      <div class="details">
+        <div class="detail">
+          <div class="detail-icon">🎮</div>
+          <div><div class="detail-label">Plataforma</div><div class="detail-value" id="detailPlatform"></div></div>
+        </div>
+
+        <div class="detail">
+          <div class="detail-icon">💿</div>
+          <div><div class="detail-label">Formato</div><div class="detail-value" id="format"></div></div>
+        </div>
+
+        <div class="detail">
+          <div class="detail-icon">🔞</div>
+          <div><div class="detail-label">Classificação</div><div class="detail-value" id="classification"></div></div>
+        </div>
+
+        <div class="detail">
+          <div class="detail-icon">📅</div>
+          <div><div class="detail-label">Ano de lançamento</div><div class="detail-value" id="year"></div></div>
+        </div>
+
+        <div class="detail">
+          <div class="detail-icon">👥</div>
+          <div><div class="detail-label">Desenvolvedor</div><div class="detail-value" id="detailDeveloper"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPRA -->
+    <aside class="buy-card">
+      <div class="old-price" id="oldPrice">R$ 269,90</div>
+
+      <div class="price-row">
+        <div class="price" id="price">R$ 243,58</div>
+        <div class="discount" id="discount">9% OFF</div>
+      </div>
+
+      <div class="seller">Vendido por GAME MANIA OFICIAL</div>
+
+      <div class="payment selected" onclick="selectPayment(this)">
+        <div class="payment-title">◉ &nbsp; Comprar à vista</div>
+        <div class="payment-price" id="cashPrice">R$ 243,58</div>
+      </div>
+
+      <div class="payment" onclick="selectPayment(this)">
+        <div class="payment-title">◯ &nbsp; Parcelamento sem juros</div>
+        <div class="payment-price" id="installmentPrice">R$ 257,91</div>
+        <div class="payment-sub">6x de R$ 42,99 sem juros</div>
+      </div>
+
+      <button class="buy-now" onclick="buyNow()">🛒 &nbsp; Comprar agora</button>
+      <button class="add-cart" onclick="addCart()">🛒 &nbsp; Adicionar ao carrinho</button>
+
+      <div class="shipping">
+        <div class="ship-item">
+          <div class="ship-icon">🚚</div>
+          <div><div class="ship-title">Frete grátis</div><div class="ship-text">Acima de R$ 199 para todo o Brasil</div></div>
+        </div>
+
+        <div class="ship-item">
+          <div class="ship-icon">⌖</div>
+          <div><div class="ship-title">Entrega rápida</div><div class="ship-text">Chegará entre 2 e 7 dias úteis</div></div>
+        </div>
+      </div>
+
+      <div class="stock">
+        <div>
+          <b>Estoque disponível</b>
+          <div class="stock-green">● Em estoque</div>
+        </div>
+        <div>
+          <div style="font-size:12px;text-align:center;margin-bottom:5px">Quantidade:</div>
+          <div class="qty">
+            <button onclick="changeQty(-1)">−</button>
+            <span id="quantity">1</span>
+            <button onclick="changeQty(1)">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="wishlist" id="wishlistButton" onclick="toggleWishlist()">
+        ♡ &nbsp; Adicionar à lista de desejos
+      </div>
+    </aside>
+
+  </section>
+
+  <!-- RECOMENDAÇÕES -->
+  <section class="recommend">
+    <h2>Você também pode gostar</h2>
+    <div class="rec-list" id="recommendations"></div>
+  </section>
+
+</main>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const produtos = {
+  "ghost-of-tsushima": {
+    nome: "Ghost of Tsushima VERSÃO DO DIRETOR",
+    categoria: "Aventura",
+    desenvolvedor: "Sucker Punch Productions",
+    plataforma: "PlayStation 5",
+    formato: "Físico",
+    classificacao: "M (Mature)",
+    ano: "2021",
+    avaliacao: "4.9",
+    precoAntigo: 269.90, preco: 243.58, desconto: "9% OFF",
+    parcelado: "R$ 257,91", parcela: "6x de R$ 42,99 sem juros",
+    descricao: "Vivencie a experiência completa de Ghost of Tsushima Versão do Diretor e explore a ilha de Tsushima em um mundo aberto deslumbrante, com expansão, conteúdo extra e melhorias gráficas para o PS5.",
+    imagens: ["https://upload.wikimedia.org/wikipedia/pt/d/dc/Ghost_of_Tsushima_capa.png", "https://cdn.mobygames.com/screenshots/12319922-ghost-of-tsushima-playstation-4-there-is-no-minimap-or-arrow-poi.jpg", "https://dt565gqrz3z7y.cloudfront.net/ce/image/Y1TUKFZtXSkKS4ROGE4QuA.jpg", "https://static.wixstatic.com/media/f9fd23_ca21bff7ab974c029976627ead0a95bb~mv2.jpg/v1/fill/w_980%2Ch_551%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/f9fd23_ca21bff7ab974c029976627ead0a95bb~mv2.jpg"]
+  },
+  "gta-v": {
+    nome: "Grand Theft Auto V",
+    categoria: "Ação e Aventura",
+    desenvolvedor: "Rockstar Games",
+    plataforma: "PlayStation 5",
+    formato: "Físico",
+    classificacao: "M (Mature)", ano: "2013", avaliacao: "4.8",
+    precoAntigo: 229.90, preco: 199.90, desconto: "13% OFF",
+    parcelado: "R$ 199,90", parcela: "5x de R$ 39,98 sem juros",
+    descricao: "Explore Los Santos e Blaine County em um enorme mundo aberto, com a campanha de Michael, Franklin e Trevor e acesso ao universo de GTA Online.",
+    imagens: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAtJMAM1NtKZtk5w0bj0m2orX3VIcxAozhLo4mPib_ZQ&s=10", "https://cdn.awsli.com.br/1695/1695030/produto/333653073/3-yuxw2u0rbh.jpg", "https://cdn-s-www.dna.fr/images/5A9802F1-8880-4446-91C5-0C3415257CDA/NW_raw/les-missions-a-trois-sont-les-plus-trepidantes-et-demandent-de-switcher-entre-les-protagonistes-1381162661.jpg"]
+  },
+  "mortal-kombat": {
+    nome: "Mortal Kombat 1",
+    categoria: "Luta",
+    desenvolvedor: "NetherRealm Studios",
+    plataforma: "PlayStation 5",
+    formato: "Físico",
+    classificacao: "M (Mature)", ano: "2023", avaliacao: "4.7",
+    precoAntigo: 299.90, preco: 249.90, desconto: "17% OFF",
+    parcelado: "R$ 249,90", parcela: "6x de R$ 41,65 sem juros",
+    descricao: "Mortal Kombat retorna com um novo universo criado pelo Deus do Fogo Liu Kang, novos personagens, golpes e fatalities.",
+    imagens: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfIVfSODaEju3ZxqO6LiccD6rz-FZScpxQ-DMeYJSsmdZv1-vetS81foRD&s=10", "https://images.purexbox.com/screenshots/139994/large.jpg"]
+  },
+  "god-of-war": {
+    nome: "God of War Ragnarök",
+    categoria: "Aventura",
+    desenvolvedor: "Santa Monica Studio",
+    plataforma: "PlayStation 5",
+    formato: "Físico",
+    classificacao: "M (Mature)", ano: "2022", avaliacao: "4.9",
+    precoAntigo: 299.90, preco: 249.90, desconto: "17% OFF",
+    parcelado: "R$ 249,90", parcela: "6x de R$ 41,65 sem juros",
+    descricao: "Kratos e Atreus embarcam em uma jornada pelos Nove Reinos enquanto o Ragnarök se aproxima.",
+    imagens: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYEtW6EDM3rz-OCCFRXFyWiM-6pEksPxn70rX2pqFea8HDvVUQVkabdyE&s=10", "https://gameinformer.com/sites/default/files/styles/content_header_l/public/2022/10/20/ff97e20e/gowr_preview_screenshot_08.jpeg.webp", "https://gaming-cdn.com/images/products/17916/screenshot/god-of-war-ragnarok-digital-deluxe-edition-digital-deluxe-edition-pc-game-steam-us-and-ca-wallpaper-2.jpg?v=1729844932"]
+  },
+  "the-last-of-us": {
+    nome: "The Last of Us Part I",
+    categoria: "Ação e Aventura",
+    desenvolvedor: "Naughty Dog",
+    plataforma: "PlayStation 5",
+    formato: "Físico",
+    classificacao: "M (Mature)", ano: "2022", avaliacao: "4.9",
+    precoAntigo: 329.90, preco: 299.90, desconto: "9% OFF",
+    parcelado: "R$ 299,90", parcela: "6x de R$ 49,98 sem juros",
+    descricao: "A jornada de Joel e Ellie reconstruída para o PlayStation 5, com gráficos, jogabilidade e recursos modernos.",
+    imagens: ["https://www.comboinfinito.com.br/principal/wp-content/uploads/2020/01/art-of-last-of-us-deluxe-cover-cropped-1204635.jpg", "https://blog.br.playstation.com/tachyon/sites/4/2022/08/d5edc656235a2aa2978b534ae8dcbd88df3dcc45-scaled.jpg", "https://gaming-cdn.com/images/products/12105/screenshot/the-last-of-us-part-i-playstation-5-game-playstation-store-europe-wallpaper-1.jpg?v=1730191343"]
+  },
+  "red-dead-redemption-2": {
+    nome: "Red Dead Redemption 2",
+    categoria: "Aventura",
+    desenvolvedor: "Rockstar Games",
+    plataforma: "PlayStation 5",
+    formato: "Físico",
+    classificacao: "M (Mature)", ano: "2018", avaliacao: "4.9",
+    precoAntigo: 279.90, preco: 249.90, desconto: "11% OFF",
+    parcelado: "R$ 249,90", parcela: "6x de R$ 41,65 sem juros",
+    descricao: "Uma aventura épica pelo Velho Oeste acompanhando Arthur Morgan e a gangue Van der Linde.",
+    imagens: ["https://upload.wikimedia.org/wikipedia/pt/e/e7/Red_Dead_Redemption_2.png", "https://img.redbull.com/images/q_auto%2Cf_auto/redbullcom/2018/08/13/4dbc9a82-0b9c-49b4-80c6-2da4cc2546df/rdr2-konfrontationen", "https://i.insider.com/5babaeccbe20125c728b456b?auto=webp&format=jpeg&width=800"]
+  },
+  "gta-vi": {
+    nome: "Grand Theft Auto VI",
+    categoria: "Ação e Aventura",
+    desenvolvedor: "Rockstar Games",
+    plataforma: "PlayStation 5",
+    formato: "Pré-venda",
+    classificacao: "M (Mature)", ano: "2026", avaliacao: "-",
+    precoAntigo: 549.90, preco: 449.90, desconto: "PRÉ-VENDA",
+    parcelado: "R$ 449,90", parcela: "10x de R$ 44,99 sem juros",
+    descricao: "Vice City está de volta. Jason e Lucia se veem envolvidos em uma conspiração criminosa que atravessa o estado de Leonida.",
+    imagens: ["https://upload.wikimedia.org/wikipedia/en/8/8e/Grand_Theft_Auto_VI.png", "https://pub-a03203fb026045f9b2e04f110b5c7bc3.r2.dev/media/2026/05/d358/f9110a2f1f8f467a87091e831e282752.jpg", "https://cdn.gracza.pl/galeria/galeria_duze3/-1961093343.jpg", "https://www.gtavice.net/content/images/xxl/gta-vi-trailer-2-1039.jpg?etag=681a7194"]
+  },
+  "resident-evil-requiem": {
+    nome: "Resident Evil Requiem",
+    categoria: "Terror e Sobrevivência",
+    desenvolvedor: "Capcom",
+    plataforma: "PlayStation 5",
+    formato: "Físico",
+    classificacao: "M (Mature)", ano: "2026", avaliacao: "-",
+    precoAntigo: 299.90, preco: 269.90, desconto: "10% OFF",
+    parcelado: "R$ 269,90", parcela: "8x de R$ 33,74 sem juros",
+    descricao: "Uma nova experiência de horror e sobrevivência da série Resident Evil, com foco em investigação, tensão e ação.",
+    imagens: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcosptKczJTvXVq_CroMJk46rJkxQP6K1jXozouDNswQ&s=10", "https://cdn.mos.cms.futurecdn.net/oKvCDs2xN6YhPaC2yricud-1200-80.jpg", "https://image.thenerdstash.com/2026/02/Rhodes-Hill-Leon-Combat-1024x576.jpg"]
+  },
+  "forza-horizon-6": {
+    nome: "Forza Horizon 6",
+    categoria: "Corrida",
+    desenvolvedor: "Playground Games",
+    plataforma: "Xbox Series X|S",
+    formato: "Físico",
+    classificacao: "E (Livre)", ano: "2026", avaliacao: "-",
+    precoAntigo: 349.90, preco: 319.90, desconto: "9% OFF",
+    parcelado: "R$ 319,90", parcela: "10x de R$ 31,99 sem juros",
+    descricao: "Uma nova aventura de corrida em mundo aberto, com carros, eventos e paisagens para explorar em alta velocidade.",
+    imagens: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1H-CXJ0NpZYozoAo6ha7f3mfuZwgV8SUmX6YOFL4erQ&s", "https://images.mein-mmo.de/medien/2026/05/Forza-Horizon-6-Rennen-Schnee-1024x576.jpg", "https://api-cdn.wemod.com/game_map_pin/1853754/750.webp", "https://cdn.forza.net/strapi-uploads/assets/FH_6_Map_Reveal_2160x2700_74bd92cbbc.jpg"]
+  },
+  "marvel-wolverine": {
+    nome: "Marvel's Wolverine",
+    categoria: "Ação",
+    desenvolvedor: "Insomniac Games",
+    plataforma: "PlayStation 5",
+    formato: "Pré-venda",
+    classificacao: "M (Mature)", ano: "2026", avaliacao: "-",
+    precoAntigo: 399.90, preco: 399.90, desconto: "PRÉ-VENDA",
+    parcelado: "R$ 399,90", parcela: "10x de R$ 39,99 sem juros",
+    descricao: "Uma aventura original de ação protagonizada por Wolverine, desenvolvida pela Insomniac Games para PlayStation 5.",
+    imagens: ["https://upload.wikimedia.org/wikipedia/pt/3/3d/Marvel%27s_Wolverine_cover_art.jpg", "https://imgengine.khaleejtimes.com/khaleejtimes-english/2026-02-25/3rlkms1t/Marvel.jpg?format=auto&height=630&mode=crop&ogImage=true&q=60&rect=100%2C0%2C1080%2C720&width=1200", "https://gmedia.playstation.com/is/image/SIEPDC/marvels-wolverine-deathstrikefight-screenshot-02-en-15sept26?$100px$="]
+  },
+  "pragmata": {
+    nome: "PRAGMATA",
+    categoria: "Ficção Científica",
+    desenvolvedor: "Capcom",
+    plataforma: "PlayStation 5",
+    formato: "Físico",
+    classificacao: "15 anos",
+    ano: "2026", avaliacao: "4.8",
+    precoAntigo: 299.90, preco: 239.92, desconto: "20% OFF",
+    parcelado: "R$ 239,92", parcela: "7x de R$ 34,27 sem juros",
+    descricao: "Hugh e a androide Diana exploram uma estação de pesquisa lunar em uma aventura de ação e ficção científica com elementos de hacking.",
+    imagens: ["https://upload.wikimedia.org/wikipedia/commons/f/fb/Pragmata_cover.jpg", "https://atomix.blob.core.windows.net/images/2026/04/10/pragmata20260407161926-870baf63-focus-0-0-825-464.webp", "https://media.ixbt.site/fit-in/2560x/https%3A/www.ixbt.com/img/n1/news/2026/3/4/screen_071_large.jpg", "https://images.squarespace-cdn.com/content/v1/5caf2dea93a63238c9069ba4/a3d20b9a-c39e-4fcc-8abb-0e2a4bc33af6/Screenshot_2026-04-14_153655.png"]
+  }
+};
+
+const recomendados = [
+  ["the-last-of-us","The Last of Us Part I","PS5","R$ 299,90"],
+  ["god-of-war","God of War Ragnarök","PS5","R$ 249,90"],
+  ["red-dead-redemption-2","Red Dead Redemption 2","PS5","R$ 249,90"],
+  ["mortal-kombat","Mortal Kombat 1","PS5","R$ 249,90"],
+  ["gta-v","Grand Theft Auto V","PS5","R$ 199,90"],
+  ["pragmata","PRAGMATA","PS5","R$ 239,92"]
+];
+
+let produtoAtual;
+let imagemAtual = 0;
+let quantidade = 1;
+
+function moeda(valor) {
+  return valor.toLocaleString("pt-BR", {style:"currency",currency:"BRL"});
+}
+
+function carregarProduto() {
+  const params = new URLSearchParams(window.location.search);
+  const slug = params.get("jogo");
+
+  // A página de produto só abre um produto quando existe um slug válido.
+  // Assim, nenhum produto é escolhido por engano e a página não cai no RDR2/Ghost.
+  if (!slug || !produtos[slug]) {
+    window.location.href = "./index.html";
+    return;
+  }
+
+  produtoAtual = produtos[slug];
+
+  document.title = "Game Mania | " + produtoAtual.nome;
+  document.getElementById("breadcrumbName").textContent = produtoAtual.categoria;
+  document.getElementById("breadcrumbProduct").textContent = produtoAtual.nome;
+  document.getElementById("productName").textContent = produtoAtual.nome;
+  document.getElementById("developer").textContent = produtoAtual.desenvolvedor;
+  document.getElementById("platform").textContent = produtoAtual.plataforma;
+  document.getElementById("detailPlatform").textContent = produtoAtual.plataforma;
+  document.getElementById("detailDeveloper").textContent = produtoAtual.desenvolvedor;
+  document.getElementById("format").textContent = produtoAtual.formato;
+  document.getElementById("classification").textContent = produtoAtual.classificacao;
+  document.getElementById("year").textContent = produtoAtual.ano;
+  document.getElementById("rating").textContent = produtoAtual.avaliacao;
+  document.getElementById("description").textContent = produtoAtual.descricao;
+
+  document.getElementById("oldPrice").textContent = moeda(produtoAtual.precoAntigo);
+  document.getElementById("price").textContent = moeda(produtoAtual.preco);
+  document.getElementById("cashPrice").textContent = moeda(produtoAtual.preco);
+  document.getElementById("discount").textContent = produtoAtual.desconto;
+  document.getElementById("installmentPrice").textContent = produtoAtual.parcelado;
+  document.querySelector(".payment-sub").textContent = produtoAtual.parcela;
+
+  montarGaleria();
+  montarRecomendacoes();
+}
+
+function montarGaleria() {
+  const thumbs = document.getElementById("thumbs");
+  const bottom = document.getElementById("galleryBottom");
+  thumbs.innerHTML = "";
+  bottom.innerHTML = "";
+
+  produtoAtual.imagens.forEach((src,i) => {
+    const btn = document.createElement("button");
+    btn.className = "thumb" + (i===0 ? " active" : "");
+    btn.innerHTML = `<img src="${src}" alt="">`;
+    btn.onclick = () => selectImage(i);
+    thumbs.appendChild(btn);
+
+    const clone = btn.cloneNode(true);
+    clone.onclick = () => selectImage(i);
+    bottom.appendChild(clone);
+  });
+
+  document.getElementById("mainImage").src = produtoAtual.imagens[0];
+  document.getElementById("mainImage").alt = produtoAtual.nome;
+}
+
+function selectImage(index) {
+  imagemAtual = index;
+  document.getElementById("mainImage").src = produtoAtual.imagens[index];
+  document.querySelectorAll(".thumb").forEach((el,i) => el.classList.toggle("active", i===index));
+}
+
+function changeImage(direction) {
+  imagemAtual = (imagemAtual + direction + produtoAtual.imagens.length) % produtoAtual.imagens.length;
+  selectImage(imagemAtual);
+}
+
+function changeQty(value) {
+  quantidade = Math.max(1, quantidade + value);
+  document.getElementById("quantity").textContent = quantidade;
+}
+
+function selectPayment(el) {
+  document.querySelectorAll(".payment").forEach(p => p.classList.remove("selected"));
+  el.classList.add("selected");
+}
+
+function getCartItems(){try{return JSON.parse(localStorage.getItem("gameManiaCartItems")||"[]")}catch(e){return []}}
+function saveCartItems(items){localStorage.setItem("gameManiaCartItems",JSON.stringify(items));localStorage.setItem("gameManiaCartCount",String(items.reduce((s,i)=>s+(Number(i.qty)||0),0)))}
+function getCartCount(){return getCartItems().reduce((s,i)=>s+(Number(i.qty)||0),0)}
+
+function getWishlist() {
+  try { return JSON.parse(localStorage.getItem("gameManiaWishlist") || "[]"); }
+  catch(e) { return []; }
+}
+
+function updateHeaderCounts() {
+  document.getElementById("cartCount").textContent = getCartCount();
+  document.getElementById("wishlistCount").textContent = getWishlist().length;
+  const wished = getWishlist().includes(new URLSearchParams(window.location.search).get("jogo"));
+  const btn = document.getElementById("wishlistButton");
+  if (btn) btn.innerHTML = wished ? "♥ &nbsp; Remover da lista de desejos" : "♡ &nbsp; Adicionar à lista de desejos";
+}
+
+function addCart() {
+  const slug = new URLSearchParams(window.location.search).get("jogo");
+  const items = getCartItems();
+  const existing = items.find(item => item.slug === slug);
+  if(existing) existing.qty += quantidade; else items.push({slug,qty:quantidade});
+  saveCartItems(items); updateHeaderCounts();
+  showToast(quantidade + "x " + produtoAtual.nome + " adicionado ao carrinho.");
+}
+
+function toggleWishlist() {
+  const slug = new URLSearchParams(window.location.search).get("jogo");
+  let lista = getWishlist();
+  if (lista.includes(slug)) {
+    lista = lista.filter(item => item !== slug);
+    showToast("Produto removido da lista de desejos.");
+  } else {
+    lista.push(slug);
+    showToast("Produto adicionado à lista de desejos ♥");
+  }
+  localStorage.setItem("gameManiaWishlist", JSON.stringify(lista));
+  updateHeaderCounts();
+}
+
+function buyNow() {
+  addCart();
+  window.location.href="checkout.html";
+}
+
+function showToast(message) {
+  const toast = document.getElementById("toast");
+  toast.textContent = message;
+  toast.classList.add("show");
+  setTimeout(() => toast.classList.remove("show"), 2500);
+}
+
+function adicionarRecomendado(slug){
+  const item=produtos[slug]; if(!item)return;
+  const items=getCartItems(); const existing=items.find(x=>x.slug===slug);
+  if(existing) existing.qty += 1; else items.push({slug,qty:1});
+  saveCartItems(items); updateHeaderCounts(); showToast(item.nome+" adicionado ao carrinho.");
+}
+
+function montarRecomendacoes() {
+  const box = document.getElementById("recommendations");
+  box.innerHTML = "";
+
+  recomendados.forEach(([slug,nome,plataforma,preco]) => {
+    const p = produtos[slug];
+    if (!p) return;
+
+    const card = document.createElement("div");
+    card.className = "rec";
+    card.setAttribute("role", "link");
+    card.setAttribute("tabindex", "0");
+    card.title = "Ver produto: " + nome;
+
+    // O card inteiro abre a página do produto. Apenas o botão do carrinho adiciona.
+    card.addEventListener("click", () => {
+      window.location.href = "./produto.html?jogo=" + encodeURIComponent(slug);
+    });
+    card.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        window.location.href = "./produto.html?jogo=" + encodeURIComponent(slug);
+      }
+    });
+
+    card.innerHTML = `
+      <img src="${p.imagens[0]}" alt="${nome}">
+      <div>
+        <div class="rec-name">${nome}</div>
+        <div class="rec-platform">${plataforma}</div>
+        <div class="rec-price">${preco}</div>
+      </div>
+      <button type="button" aria-label="Adicionar ${nome} ao carrinho">🛒</button>
+    `;
+
+    // Impede que o clique no carrinho também abra a página do produto.
+    const cartButton = card.querySelector("button");
+    cartButton.addEventListener("click", (e) => {
+      e.stopPropagation();
+      adicionarRecomendado(slug);
+    });
+
+    box.appendChild(card);
+  });
+}
+
+document.getElementById("search").addEventListener("keydown", function(e) {
+  if (e.key === "Enter" && this.value.trim()) {
+    showToast('Pesquisa: ' + this.value.trim());
+  }
+});
+
+if (localStorage.getItem("gameManiaCartItems") === null) localStorage.setItem("gameManiaCartItems", "[]");
+if (localStorage.getItem("gameManiaCartCount") === null) localStorage.setItem("gameManiaCartCount", "0");
+if (localStorage.getItem("gameManiaWishlist") === null) localStorage.setItem("gameManiaWishlist", "[]");
+carregarProduto();
+updateHeaderCounts();
+</script>
+
+</body>
+</html>

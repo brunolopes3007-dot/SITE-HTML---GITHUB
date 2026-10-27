@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Game Mania</title>
+<link href="style.css" rel="stylesheet"/>
+<style>
+.header-icons .cart, .wishlist-index { position: relative; display: inline-flex; align-items: center; gap: 4px; text-decoration:none; color:inherit; }
+.header-icons .cart span, .wishlist-index span { font-size: 11px; min-width: 16px; height: 16px; padding: 0 4px; border-radius: 99px; background: #fff; color: #000; display: inline-flex; align-items:center; justify-content:center; font-weight:700; }
+.logo-image{width:108px;height:58px;object-fit:contain;display:block}.logo{display:flex;align-items:center}
+</style>
+</head>
+<body>
+<main class="site">
+<!-- =====================================================
+         HEADER
+    ====================================================== -->
+<header class="header">
+<!-- LOGO -->
+<a class="logo" href="index.html" aria-label="Game Mania - página inicial">
+<img src="logo-gamemania-cropped.png" alt="Game Mania" class="logo-image">
+</a>
+<!-- BUSCA -->
+<div class="search-box">
+<input id="searchInput" placeholder="Buscar na loja" type="text"/>
+</div>
+<!-- ÍCONES -->
+<div class="header-icons">
+<!-- CARRINHO -->
+<a aria-label="Carrinho" class="cart icon" href="cart.html">
+                🛒 <span id="cartCountIndex">0</span>
+            </a>
+<!-- LISTA DE DESEJOS -->
+<a aria-label="Lista de desejos" class="wishlist-index" href="wishlist.html">♡ <span id="wishlistCountIndex">0</span></a>
+<!-- USUÁRIO -->
+<a aria-label="Minha conta" class="user icon" href="login.html">
+<img alt="Minha conta" src="https://images.icon-icons.com/2483/PNG/512/user_icon_149851.png"/>
+</a>
+</div>
+</header>
+<!-- =====================================================
+         PLATAFORMAS
+    ====================================================== -->
+<nav class="platform-bar">
+<!-- =================================================
+             PLAYSTATION
+        ================================================== -->
+<div class="platform-item">
+<a aria-label="PlayStation" class="platform" href="#">
+<span class="platform-logo">
+<img alt="PlayStation" src="https://www.nicepng.com/png/full/10-104138_blue-playstation-logo-png-playstation-logo-no-background.png"/>
+</span>
+<span>
+                    PS
+                </span>
+</a>
+<!-- SUBMENU PLAYSTATION -->
+<div class="platform-menu">
+<div class="platform-menu-content">
+<div class="platform-menu-links">
+<a href="#">
+                            Exclusivos PS
+                        </a>
+<a href="#">
+                            Consoles
+                        </a>
+<a href="#">
+                            PS Plus
+                        </a>
+<a href="#">
+                            Lançamentos
+                        </a>
+</div>
+<div class="platform-feature">
+<span class="feature-label">
+                            DESTAQUE
+                        </span>
+<img alt="God of War" src="https://cdn.awsli.com.br/1634/1634877/produto/78554131/c8c4582600.jpg"/>
+<span class="feature-name">
+                            God of War
+                        </span>
+</div>
+</div>
+</div>
+</div>
+<!-- =================================================
+             XBOX
+        ================================================== -->
+<div class="platform-item">
+<a aria-label="Xbox" class="platform" href="#">
+<span class="platform-logo">
+<img alt="Xbox" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Xbox_logo_2012_cropped.svg/250px-Xbox_logo_2012_cropped.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail"/>
+</span>
+<span>
+                    Xbox
+                </span>
+</a>
+<!-- SUBMENU XBOX -->
+<div class="platform-menu">
+<div class="platform-menu-content">
+<div class="platform-menu-links">
+<a href="#">
+                            Exclusivos Xbox
+                        </a>
+<a href="#">
+                            Consoles
+                        </a>
+<a href="#">
+                            Game Pass
+                        </a>
+<a href="#">
+                            Lançamentos
+                        </a>
+</div>
+<div class="platform-feature">
+<span class="feature-label">
+                            DESTAQUE
+                        </span>
+<img alt="Halo" src="https://m.media-amazon.com/images/I/81GYn0fJehL.jpg"/>
+<span class="feature-name">
+                            Halo
+                        </span>
+</div>
+</div>
+</div>
+</div>
+<!-- =================================================
+             PC
+        ================================================== -->
+<div class="platform-item">
+<a aria-label="PC" class="platform" href="#">
+<span class="platform-logo">
+<img alt="PC" src="https://images.vexels.com/media/users/3/157318/isolated/preview/2782b0b66efa5815b12c9c637322aff3-computador-desktop-icon-computer.png"/>
+</span>
+<span>
+                    PC
+                </span>
+</a>
+<!-- SUBMENU PC -->
+<div class="platform-menu">
+<div class="platform-menu-content">
+<div class="platform-menu-links">
+<a href="#">
+                            Exclusivos PC
+                        </a>
+<a href="#">
+                            Hardware
+                        </a>
+<a href="#">
+                            PC Game Pass
+                        </a>
+<a href="#">
+                            Lançamentos
+                        </a>
+</div>
+<div class="platform-feature">
+<span class="feature-label">
+                            DESTAQUE
+                        </span>
+<img alt="Ghost of Tsushima" src="https://upload.wikimedia.org/wikipedia/pt/d/dc/Ghost_of_Tsushima_capa.png?utm_source=pt.wikipedia.org&amp;utm_campaign=index&amp;utm_content=original"/>
+<span class="feature-name">
+                            Ghost of Tsushima
+                        </span>
+</div>
+</div>
+</div>
+</div>
+<!-- =================================================
+             NINTENDO
+        ================================================== -->
+<div class="platform-item">
+<a aria-label="Nintendo Switch" class="platform" href="#">
+<span class="platform-logo">
+<img alt="Nintendo" src="https://www.pngkey.com/png/full/14-141869_nintendo-switch-logo-nintendo-switch-logo-png.png"/>
+</span>
+<span>
+                    Nintendo
+                </span>
+</a>
+<!-- SUBMENU NINTENDO -->
+<div class="platform-menu">
+<div class="platform-menu-content">
+<div class="platform-menu-links">
+<a href="#">
+                            Exclusivos Nintendo
+                        </a>
+<a href="#">
+                            Consoles
+                        </a>
+<a href="#">
+                            Nintendo Switch Online
+                        </a>
+<a href="#">
+                            Lançamentos
+                        </a>
+</div>
+<div class="platform-feature">
+<span class="feature-label">
+                            DESTAQUE
+                        </span>
+<img alt="The Legend of Zelda" src="https://m.media-amazon.com/images/I/81KGsbq8ekL.jpg"/>
+<span class="feature-name">
+                            The Legend of Zelda
+                        </span>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<!-- =====================================================
+         CARROSSEL PRINCIPAL
+    ====================================================== -->
+<section class="hero">
+<div class="carousel">
+<!-- GTA VI -->
+<div class="slide active">
+<img alt="Grand Theft Auto VI" class="hero-image" src="https://s2-ge.glbimg.com/V3SFKCHaBv0bFZ21DTghiSpNm0s=/0x0:1920x1080/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_bc8228b6673f488aa253bbcb03c80ec5/internal_photos/bs/2023/n/x/G1SGMPSkAnKlPEY2XMHw/banner-oficial-gta-6-rockstar.jpg"/>
+<div class="slide-info">
+<span class="slide-tag">
+                        LANÇAMENTO
+                    </span>
+<h2>
+                        GRAND THEFT AUTO VI
+                    </h2>
+<p>
+                        Rockstar Games
+                    </p>
+</div>
+</div>
+<!-- WOLVERINE -->
+<div class="slide">
+<img alt="Marvel's Wolverine para PS5" class="hero-image" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiJyEAzWvQ_2O5lqF7SDt9JZMUnmVTPnVSwX4p-lQbOZbBAdrmsyz1CJ_ISKV9-cLs8gZ-dEacTUoVewf5cTProLzM322TlWp6tKK87NdfxOKeRiK2hH53JAewkNc2UBP-5blJQbeeeGPbSQGamGkaQhTaBHqUQ9zTBvjCdwjJTAOjUqoZQnLTSiq1n/s1920/Marvels-Wolverine-Gameplay-State-of-Play.jpg"/>
+<div class="slide-info">
+<span class="slide-tag">
+                        PLAYSTATION 5
+                    </span>
+<h2>
+                        MARVEL'S WOLVERINE
+                    </h2>
+<p>
+                        Insomniac Games
+                    </p>
+</div>
+</div>
+<!-- LEGO BATMAN -->
+<div class="slide">
+<img alt="LEGO Batman" class="hero-image" src="https://i.redd.it/jxbaq9yl3swg1.jpeg"/>
+<div class="slide-info">
+<span class="slide-tag">
+                        DESTAQUE
+                    </span>
+<h2>
+                        LEGO BATMAN
+                    </h2>
+<p>
+                        The Videogame
+                    </p>
+</div>
+</div>
+</div>
+<!-- SETA ESQUERDA -->
+<button aria-label="Banner anterior" class="hero-arrow hero-prev" id="prevSlide">
+
+            ‹
+
+        </button>
+<!-- SETA DIREITA -->
+<button aria-label="Próximo banner" class="hero-arrow hero-next" id="nextSlide">
+
+            ›
+
+        </button>
+<!-- INDICADORES -->
+<div class="carousel-dots">
+<button aria-label="Ir para GTA VI" class="dot active" data-slide="0"></button>
+<button aria-label="Ir para Wolverine" class="dot" data-slide="1"></button>
+<button aria-label="Ir para LEGO Batman" class="dot" data-slide="2"></button>
+</div>
+</section>
+<!-- =====================================================
+         DESTAQUES
+    ====================================================== -->
+<section class="section">
+<div class="section-header">
+<h2 class="section-title">
+                Destaques
+            </h2>
+<div class="section-line"></div>
+</div>
+<div class="cards" id="gamesGrid">
+<article class="game-card" data-name="gta v grand theft auto">
+<a class="game-link" href="./produto.html?jogo=gta-v" data-product="gta-v">
+<img alt="Grand Theft Auto V" class="cover-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAtJMAM1NtKZtk5w0bj0m2orX3VIcxAozhLo4mPib_ZQ&amp;s=10"/>
+</a>
+<a class="buy" href="./produto.html?jogo=gta-v" data-product="gta-v" target="_self">
+                    Comprar
+                </a>
+</article>
+<article class="game-card" data-name="mortal kombat">
+<a class="game-link" href="./produto.html?jogo=mortal-kombat" data-product="mortal-kombat">
+<img alt="Mortal Kombat" class="cover-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfIVfSODaEju3ZxqO6LiccD6rz-FZScpxQ-DMeYJSsmdZv1-vetS81foRD&amp;s=10"/>
+</a>
+<a class="buy" href="./produto.html?jogo=mortal-kombat" data-product="mortal-kombat" target="_self">
+                    Comprar
+                </a>
+</article>
+<article class="game-card" data-name="god of war">
+<a class="game-link" href="./produto.html?jogo=god-of-war" data-product="god-of-war">
+<img alt="God of War Ragnarök" class="cover-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYEtW6EDM3rz-OCCFRXFyWiM-6pEksPxn70rX2pqFea8HDvVUQVkabdyE&amp;s=10"/>
+</a>
+<a class="buy" href="./produto.html?jogo=god-of-war" data-product="god-of-war" target="_self">
+                    Comprar
+                </a>
+</article>
+<article class="game-card" data-name="the last of us">
+<a class="game-link" href="./produto.html?jogo=the-last-of-us" data-product="the-last-of-us">
+<img alt="The Last of Us" class="cover-image" src="https://www.comboinfinito.com.br/principal/wp-content/uploads/2020/01/art-of-last-of-us-deluxe-cover-cropped-1204635.jpg"/>
+</a>
+<a class="buy" href="./produto.html?jogo=the-last-of-us" data-product="the-last-of-us" target="_self">
+                    Comprar
+                </a>
+</article>
+<article class="game-card" data-name="red dead redemption 2 red dead">
+<a class="game-link" href="./produto.html?jogo=red-dead-redemption-2" data-product="red-dead-redemption-2">
+<img alt="Red Dead Redemption 2" class="cover-image" src="https://upload.wikimedia.org/wikipedia/pt/e/e7/Red_Dead_Redemption_2.png?utm_source=pt.wikipedia.org&amp;utm_campaign=index&amp;utm_content=original"/>
+</a>
+<a class="buy" href="./produto.html?jogo=red-dead-redemption-2" data-product="red-dead-redemption-2" target="_self">
+                    Comprar
+                </a>
+</article>
+</div>
+</section>
+<!-- =====================================================
+         LANÇAMENTOS
+    ====================================================== -->
+<section class="section releases">
+<div class="section-header">
+<h2 class="section-title">
+                Lançamentos
+            </h2>
+<div class="section-line"></div>
+</div>
+<div class="cards">
+<!-- GTA VI -->
+<article class="game-card release-card" data-name="gta vi">
+<a class="game-link" href="./produto.html?jogo=gta-vi" data-product="gta-vi">
+<img alt="Grand Theft Auto VI" class="cover-image" src="https://preview.redd.it/gta-vi-cover-concept-v0-2rhyqggp9qze1.png?auto=webp&amp;s=1931ff8c689cb6cff7f8d3e6c2ec390a0bd2d0af"/>
+</a>
+<img alt="Grand Theft Auto VI" class="release-logo gta-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Grand_Theft_Auto_VI_logo_%28with_gradient%29.svg/960px-Grand_Theft_Auto_VI_logo_%28with_gradient%29.svg.png?utm_source=pt.wikipedia.org&amp;utm_campaign=index&amp;utm_content=thumbnail"/>
+</article>
+<!-- RESIDENT EVIL -->
+<article class="game-card release-card" data-name="resident evil requiem">
+<a class="game-link" href="./produto.html?jogo=resident-evil-requiem" data-product="resident-evil-requiem">
+<img alt="Resident Evil Requiem" class="cover-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcosptKczJTvXVq_CroMJk46rJkxQP6K1jXozouDNswQ&amp;s=10"/>
+</a>
+<img alt="Resident Evil Requiem" class="release-logo resident-logo" src="https://cdn2.steamgriddb.com/logo/5b91726d21e05916d2eb308f2fd0444e.png"/>
+</article>
+<!-- FORZA -->
+<article class="game-card release-card" data-name="forza horizon 6">
+<a class="game-link" href="./produto.html?jogo=forza-horizon-6" data-product="forza-horizon-6">
+<img alt="Forza Horizon 6" class="cover-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1H-CXJ0NpZYozoAo6ha7f3mfuZwgV8SUmX6YOFL4erQ&amp;s"/>
+</a>
+<img alt="Forza Horizon 6" class="release-logo forza-logo" src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Forza_Horizon_6_logo.svg/3840px-Forza_Horizon_6_logo.svg.png?utm_source=pt.wikipedia.org&utm_campaign=index&utm_content=thumbnail"/>
+</article>
+<!-- WOLVERINE -->
+<article class="game-card release-card" data-name="marvel wolverine">
+<a class="game-link" href="./produto.html?jogo=marvel-wolverine" data-product="marvel-wolverine">
+<img alt="Marvel's Wolverine" class="cover-image" src="https://upload.wikimedia.org/wikipedia/pt/3/3d/Marvel%27s_Wolverine_cover_art.jpg?utm_source=pt.wikipedia.org&amp;utm_campaign=index&amp;utm_content=original"/>
+</a>
+<img alt="Marvel's Wolverine" class="release-logo wolverine-logo" src="https://image.api.playstation.com/vulcan/ap/rnd/202510/1617/e831c96a9d96ec295de7b6c9db155711e7cfafa49a3a6eee.png"/>
+</article>
+<!-- PRAGMATA -->
+<article class="game-card release-card" data-name="pragmata">
+<a class="game-link" href="./produto.html?jogo=pragmata" data-product="pragmata">
+<img alt="Pragmata" class="cover-image" src="https://upload.wikimedia.org/wikipedia/commons/f/fb/Pragmata_cover.jpg?utm_source=pt.wikipedia.org&amp;utm_campaign=index&amp;utm_content=original"/>
+</a>
+<img alt="Pragmata" class="release-logo pragmata-logo" src="https://gmedia.playstation.com/is/image/SIEPDC/pragmata-logo-01-en-17sept25?$native--t$"/>
+</article>
+</div>
+</section>
+<div class="footer-space"></div>
+</main>
+<!-- ============================================================
+     JAVASCRIPT
+============================================================ -->
+<script>
+
+
+/* ============================================================
+   CARROSSEL
+============================================================ */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+
+        const slides =
+            document.querySelectorAll(".slide");
+
+
+        const dots =
+            document.querySelectorAll(".dot");
+
+
+        const prevButton =
+            document.getElementById("prevSlide");
+
+
+        const nextButton =
+            document.getElementById("nextSlide");
+
+
+        let currentSlide = 0;
+
+        let autoPlay;
+
+
+
+        function showSlide(index) {
+
+
+            if (index >= slides.length) {
+
+                index = 0;
+
+            }
+
+
+            if (index < 0) {
+
+                index =
+                    slides.length - 1;
+
+            }
+
+
+            currentSlide = index;
+
+
+
+            slides.forEach(
+                (slide, i) => {
+
+                    slide.classList.toggle(
+                        "active",
+                        i === currentSlide
+                    );
+
+                }
+            );
+
+
+
+            dots.forEach(
+                (dot, i) => {
+
+                    dot.classList.toggle(
+                        "active",
+                        i === currentSlide
+                    );
+
+                }
+            );
+
+
+        }
+
+
+
+        function nextSlide() {
+
+            showSlide(
+                currentSlide + 1
+            );
+
+            restartAutoPlay();
+
+        }
+
+
+
+        function previousSlide() {
+
+            showSlide(
+                currentSlide - 1
+            );
+
+            restartAutoPlay();
+
+        }
+
+
+
+        nextButton.addEventListener(
+            "click",
+            nextSlide
+        );
+
+
+        prevButton.addEventListener(
+            "click",
+            previousSlide
+        );
+
+
+
+        dots.forEach(
+            (dot, index) => {
+
+                dot.addEventListener(
+                    "click",
+                    () => {
+
+                        showSlide(index);
+
+                        restartAutoPlay();
+
+                    }
+                );
+
+            }
+        );
+
+
+
+        function startAutoPlay() {
+
+            autoPlay =
+                setInterval(
+                    () => {
+
+                        showSlide(
+                            currentSlide + 1
+                        );
+
+                    },
+                    5000
+                );
+
+        }
+
+
+
+        function restartAutoPlay() {
+
+            clearInterval(autoPlay);
+
+            startAutoPlay();
+
+        }
+
+
+
+        showSlide(0);
+
+        startAutoPlay();
+
+
+
+        const hero =
+            document.querySelector(".hero");
+
+
+        hero.addEventListener(
+            "mouseenter",
+            () => {
+
+                clearInterval(autoPlay);
+
+            }
+        );
+
+
+        hero.addEventListener(
+            "mouseleave",
+            () => {
+
+                startAutoPlay();
+
+            }
+        );
+
+
+
+        let touchStartX = 0;
+
+        let touchEndX = 0;
+
+
+
+        hero.addEventListener(
+            "touchstart",
+            event => {
+
+                touchStartX =
+                    event.changedTouches[0]
+                    .screenX;
+
+            },
+            {
+                passive: true
+            }
+        );
+
+
+
+        hero.addEventListener(
+            "touchend",
+            event => {
+
+
+                touchEndX =
+                    event.changedTouches[0]
+                    .screenX;
+
+
+                const difference =
+                    touchStartX - touchEndX;
+
+
+
+                if (difference > 50) {
+
+                    nextSlide();
+
+                }
+
+
+
+                if (difference < -50) {
+
+                    previousSlide();
+
+                }
+
+
+            },
+            {
+                passive: true
+            }
+        );
+
+
+    }
+);
+
+
+
+/* ============================================================
+   BUSCA
+============================================================ */
+
+const searchInput =
+    document.getElementById(
+        "searchInput"
+    );
+
+
+const games =
+    document.querySelectorAll(
+        "#gamesGrid .game-card"
+    );
+
+
+searchInput.addEventListener(
+    "input",
+    () => {
+
+
+        const search =
+            searchInput.value
+            .toLowerCase()
+            .trim();
+
+
+
+        games.forEach(
+            game => {
+
+
+                const name =
+                    game
+                    .dataset
+                    .name
+                    .toLowerCase();
+
+
+
+                if (
+                    name.includes(search)
+                    ||
+                    search === ""
+                ) {
+
+                    game.style.display =
+                        "";
+
+                } else {
+
+                    game.style.display =
+                        "none";
+
+                }
+
+
+            }
+        );
+
+
+    }
+);
+
+
+</script>
+<script>
+// Navegação dos produtos: nunca adiciona ao carrinho aqui.
+// A página principal apenas abre o produto correspondente.
+document.querySelectorAll('a[data-product]').forEach(function(link){
+  link.addEventListener('click', function(e){
+    e.preventDefault();
+    window.location.href = './produto.html?jogo=' + encodeURIComponent(this.dataset.product);
+  });
+});
+</script>
+<script>
+(function(){
+  if(localStorage.getItem("gameManiaCartItems")===null) localStorage.setItem("gameManiaCartItems","[]");
+  if(localStorage.getItem("gameManiaWishlist")===null) localStorage.setItem("gameManiaWishlist","[]");
+  function update(){
+    let items=[]; try{items=JSON.parse(localStorage.getItem("gameManiaCartItems")||"[]")}catch(e){items=[]}
+    const total=items.reduce((sum,item)=>sum+(Number(item.qty)||0),0);
+    localStorage.setItem("gameManiaCartCount",String(total));
+    document.getElementById("cartCountIndex").textContent = total;
+    try { document.getElementById("wishlistCountIndex").textContent = JSON.parse(localStorage.getItem("gameManiaWishlist")||"[]").length; } catch(e) { document.getElementById("wishlistCountIndex").textContent=0; }
+  }
+  update();
+  window.addEventListener("storage", update);
+})();
+</script>
+</body>
+</html>

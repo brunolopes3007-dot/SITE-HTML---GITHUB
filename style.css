@@ -1,0 +1,2486 @@
+/* ============================================================
+   GAME MANIA - PREMIUM EDITION
+   STYLE.CSS (RE-ARQUITETADO COM ESTÉTICA MODERNA)
+============================================================ */
+
+
+/* ============================================================
+   VARIÁVEIS
+============================================================ */
+
+:root {
+
+    /* Paleta Dark Premium */
+    --black: #050507;
+    --black-1: #0a0a0f;
+    --black-2: #101016;
+    --black-3: #14141f;
+
+    /* Cores de Destaque Gamer */
+    --accent: #ff4655;
+    --accent-glow: rgba(255, 70, 85, 0.35);
+    --accent-dim: rgba(255, 70, 85, 0.15);
+
+    /* Tons Neutros */
+    --white: #ffffff;
+    --white-soft: #f0f0f5;
+    --gray: #9494a6;
+    --gray-dark: #232333;
+
+    /* Bordas e Divisores Tecnológicos */
+    --border: rgba(255, 255, 255, 0.06);
+    --border-light: rgba(255, 255, 255, 0.15);
+
+    /* Arredondamento Orgânico */
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 20px;
+
+    /* Curva de Animação Fluida */
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+}
+
+
+/* ============================================================
+   RESET
+============================================================ */
+
+* {
+
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+
+html {
+
+    background: var(--black);
+
+    scroll-behavior: smooth;
+
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    margin: 0;
+
+    background:
+        radial-gradient(
+            circle at 50% -20%,
+            #1e1428 0%,
+            #0a0812 45%,
+            var(--black) 85%
+        );
+
+    color: var(--white-soft);
+
+    font-family:
+        'Inter',
+        system-ui,
+        -apple-system,
+        sans-serif;
+
+    -webkit-font-smoothing: antialiased;
+
+    text-rendering: optimizeLegibility;
+
+}
+
+
+a {
+
+    color: inherit;
+
+    text-decoration: none;
+
+    transition: color 250ms var(--ease);
+
+}
+
+
+button,
+input {
+
+    font: inherit;
+
+}
+
+
+button {
+
+    cursor: pointer;
+
+}
+
+
+/* ============================================================
+   SELEÇÃO
+============================================================ */
+
+::selection {
+
+    color: var(--white);
+
+    background: var(--accent);
+
+}
+
+
+/* ============================================================
+   SITE
+============================================================ */
+
+.site {
+
+    width: 100%;
+
+    max-width: 550px;
+
+    min-height: 100vh;
+
+    margin: 0 auto;
+
+    background: var(--black-1);
+
+    overflow: hidden;
+
+    position: relative;
+
+}
+
+
+/* ============================================================
+   HEADER
+============================================================ */
+
+.header {
+
+    width: 100%;
+
+    height: 64px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+    padding: 0 16px;
+
+    position: relative;
+
+    z-index: 100;
+
+    background: rgba(10, 10, 15, 0.75);
+
+    backdrop-filter: blur(12px);
+
+    -webkit-backdrop-filter: blur(12px);
+
+    border-top:
+        2px solid var(--accent);
+
+    border-bottom:
+        1px solid var(--border);
+
+}
+
+
+.header::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    bottom: -1px;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 70, 85, 0.4),
+            transparent
+        );
+
+    pointer-events: none;
+
+}
+
+
+/* ============================================================
+   LOGO
+============================================================ */
+
+.logo {
+
+    width: 75px;
+
+    min-width: 75px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    color: var(--white-soft);
+
+    font-family:
+        'Impact',
+        'Arial Narrow Bold',
+        sans-serif;
+
+    font-size: 14px;
+
+    line-height: 1;
+
+    letter-spacing: 0.5px;
+
+    text-transform: uppercase;
+
+    transition:
+        color 300ms var(--ease),
+        transform 300ms var(--ease),
+        text-shadow 300ms var(--ease);
+
+}
+
+
+.logo:hover {
+
+    color: var(--white);
+
+    transform: scale(1.05);
+
+    text-shadow: 0 0 15px var(--accent-glow);
+
+}
+
+
+.logo span {
+
+    display: block;
+
+}
+
+
+/* ============================================================
+   BUSCA
+============================================================ */
+
+.search-box {
+
+    flex: 1;
+
+    min-width: 0;
+
+    max-width: 220px;
+
+}
+
+
+.search-box input {
+
+    width: 100%;
+
+    height: 32px;
+
+    padding:
+        0 14px;
+
+    outline: none;
+
+    border:
+        1px solid var(--border-light);
+
+    border-radius:
+        var(--radius-sm);
+
+    background:
+        rgba(0, 0, 0, 0.4);
+
+    color: var(--white);
+
+    font-size: 11px;
+
+    transition:
+        border-color 250ms var(--ease),
+        background 250ms var(--ease),
+        box-shadow 250ms var(--ease);
+
+}
+
+
+.search-box input::placeholder {
+
+    color: var(--gray);
+
+}
+
+
+.search-box input:hover {
+
+    border-color: rgba(255, 255, 255, 0.3);
+
+    background: rgba(0, 0, 0, 0.6);
+
+}
+
+
+.search-box input:focus {
+
+    border-color: var(--accent);
+
+    background: var(--black-3);
+
+    box-shadow:
+        0 0 0 3px var(--accent-dim),
+        inset 0 1px 2px rgba(0,0,0,0.5);
+
+}
+
+
+/* ============================================================
+   ÍCONES
+============================================================ */
+
+.header-icons {
+
+    margin-left: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+
+.icon {
+
+    width: 32px;
+
+    height: 32px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: var(--gray);
+
+    font-size: 19px;
+
+    border-radius: 50%;
+
+    background: transparent;
+
+    transition:
+        transform 250ms var(--ease),
+        background 250ms var(--ease),
+        color 250ms var(--ease);
+
+}
+
+
+.icon:hover {
+
+    color: var(--accent);
+
+    background: rgba(255, 255, 255, 0.03);
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+/* ============================================================
+   BARRA DE PLATAFORMAS
+============================================================ */
+
+.platform-bar {
+
+    width: 100%;
+
+    height: 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 32px;
+
+    position: relative;
+
+    z-index: 90;
+
+    background: var(--black-2);
+
+    border-bottom:
+        1px solid var(--border);
+
+}
+
+
+/* ============================================================
+   ITEM DA PLATAFORMA
+============================================================ */
+
+.platform-item {
+
+    position: relative;
+
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+}
+
+
+/* ============================================================
+   PLATAFORMA
+============================================================ */
+
+.platform {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 6px;
+
+    height: 100%;
+
+    color: var(--gray);
+
+    font-size: 11px;
+
+    font-weight: 500;
+
+    white-space: nowrap;
+
+    transition:
+        color 250ms var(--ease),
+        transform 250ms var(--ease);
+
+}
+
+
+.platform:hover {
+
+    color: var(--white);
+
+    transform:
+        translateY(-1px);
+
+}
+
+
+/* ============================================================
+   LOGOS DAS PLATAFORMAS
+============================================================ */
+
+.platform-logo {
+
+    width: 18px;
+
+    height: 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+}
+
+
+.platform-logo img {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    object-fit: contain;
+
+    filter:
+        grayscale(1)
+        brightness(1.5);
+
+    opacity: .7;
+
+    transition:
+        filter 250ms var(--ease),
+        opacity 250ms var(--ease),
+        transform 250ms var(--ease);
+
+}
+
+
+.platform:hover .platform-logo img {
+
+    filter:
+        grayscale(0)
+        brightness(1.1);
+
+    opacity: 1;
+
+    transform:
+        scale(1.12);
+
+}
+
+
+/* ============================================================
+   TAMANHO DOS LOGOS
+============================================================ */
+
+.platform:nth-child(1) .platform-logo img { width: 15px; height: 15px; }
+
+.platform:nth-child(2) .platform-logo img { width: 17px; height: 17px; }
+
+.platform:nth-child(3) .platform-logo img { width: 16px; height: 16px; }
+
+.platform:nth-child(4) .platform-logo img { width: 18px; height: 18px; }
+
+
+/* ============================================================
+   SUBMENU DAS PLATAFORMAS
+============================================================ */
+
+.platform-menu {
+
+    position: absolute;
+
+    top: calc(100% + 2px);
+
+    left: 50%;
+
+    width: 420px;
+
+    min-height: 250px;
+
+    padding: 20px;
+
+    background: rgba(16, 16, 22, 0.95);
+
+    backdrop-filter: blur(20px);
+
+    -webkit-backdrop-filter: blur(20px);
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+    border-top:
+        2px solid var(--accent);
+
+    border-radius:
+        0 0 var(--radius-md) var(--radius-md);
+
+    box-shadow:
+        0 24px 50px rgba(0, 0, 0, 0.7),
+        0 4px 20px rgba(0, 0, 0, 0.4);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transform:
+        translateX(-50%)
+        translateY(-12px);
+
+    transition:
+        opacity 250ms var(--ease),
+        visibility 250ms var(--ease),
+        transform 300ms var(--ease);
+
+}
+
+
+/* ============================================================
+   MOSTRAR SUBMENU
+============================================================ */
+
+.platform-item:hover .platform-menu,
+.platform-item:focus-within .platform-menu {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+    transform:
+        translateX(-50%)
+        translateY(0);
+
+}
+
+
+/* ============================================================
+   CONTEÚDO DO SUBMENU
+============================================================ */
+
+.platform-menu-content {
+
+    width: 100%;
+
+    min-height: 210px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        140px;
+
+    gap: 24px;
+
+}
+
+
+/* ============================================================
+   LINKS DO SUBMENU
+============================================================ */
+
+.platform-menu-links {
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    gap: 6px;
+
+}
+
+
+.platform-menu-links a {
+
+    width: 100%;
+
+    min-height: 42px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding:
+        0 14px;
+
+    border-radius: var(--radius-sm);
+
+    color: var(--gray);
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    border:
+        1px solid transparent;
+
+    transition:
+        color 200ms var(--ease),
+        background 200ms var(--ease),
+        border-color 200ms var(--ease),
+        padding 200ms var(--ease);
+
+}
+
+
+.platform-menu-links a::before {
+
+    content: "";
+
+    margin-right: 12px;
+
+    width: 5px;
+
+    height: 5px;
+
+    border-top: 2px solid var(--gray-dark);
+
+    border-right: 2px solid var(--gray-dark);
+
+    transform: rotate(45deg);
+
+    display: inline-block;
+
+    transition:
+        border-color 200ms var(--ease),
+        transform 200ms var(--ease);
+
+}
+
+
+.platform-menu-links a:hover {
+
+    color: var(--white);
+
+    padding-left: 18px;
+
+    background: rgba(255, 76, 85, 0.08);
+
+    border-color: rgba(255, 76, 85, 0.2);
+
+}
+
+
+.platform-menu-links a:hover::before {
+
+    border-color: var(--accent);
+
+    transform: rotate(45deg) translate(2px, -2px);
+
+}
+
+
+/* ============================================================
+   DESTAQUE COM CAPA
+============================================================ */
+
+.platform-feature {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        8px;
+
+    border-left:
+        1px solid var(--border);
+
+}
+
+
+.feature-label {
+
+    margin-bottom: 8px;
+
+    color: var(--accent);
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+    text-transform: uppercase;
+
+}
+
+
+.platform-feature img {
+
+    width: 96px;
+
+    height: 134px;
+
+    display: block;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    border-radius: var(--radius-sm);
+
+    border:
+        1px solid rgba(255,255,255,0.1);
+
+    box-shadow:
+        0 12px 24px rgba(0, 0, 0, 0.6);
+
+    transition:
+        transform 300ms var(--ease),
+        border-color 300ms var(--ease),
+        box-shadow 300ms var(--ease);
+
+}
+
+
+.platform-feature:hover img {
+
+    transform:
+        translateY(-4px)
+        scale(1.04);
+
+    border-color: var(--accent);
+
+    box-shadow:
+        0 16px 32px rgba(255, 70, 85, 0.25);
+
+}
+
+
+.feature-name {
+
+    max-width: 120px;
+
+    margin-top: 10px;
+
+    color: var(--white-soft);
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    text-align: center;
+
+    line-height: 1.3;
+
+}
+
+
+
+/* ============================================================
+   SUBMENUS POR PLATAFORMA — CORES EXCLUSIVAS
+   Estas cores afetam SOMENTE os submenus.
+============================================================ */
+
+/* PlayStation — azul */
+.platform-bar > .platform-item:nth-child(1) .platform-menu {
+    --submenu-accent: #2f7cff;
+    --submenu-rgb: 47, 124, 255;
+}
+
+/* Xbox — verde */
+.platform-bar > .platform-item:nth-child(2) .platform-menu {
+    --submenu-accent: #52d726;
+    --submenu-rgb: 82, 215, 38;
+}
+
+/* PC — ciano */
+.platform-bar > .platform-item:nth-child(3) .platform-menu {
+    --submenu-accent: #21d4fd;
+    --submenu-rgb: 33, 212, 253;
+}
+
+/* Nintendo — vermelho */
+.platform-bar > .platform-item:nth-child(4) .platform-menu {
+    --submenu-accent: #ff3b46;
+    --submenu-rgb: 255, 59, 70;
+}
+
+/* Painel do submenu mais moderno, mantendo o restante do site intacto */
+.platform-menu {
+    overflow: hidden;
+    background:
+        radial-gradient(
+            circle at 18% 0%,
+            rgba(var(--submenu-rgb, 255, 70, 85), 0.10) 0%,
+            transparent 42%
+        ),
+        linear-gradient(
+            145deg,
+            rgba(20, 20, 29, 0.97) 0%,
+            rgba(10, 10, 16, 0.97) 100%
+        );
+    border-color: rgba(255, 255, 255, 0.09);
+    border-top-color: var(--submenu-accent, var(--accent));
+    box-shadow:
+        0 24px 55px rgba(0, 0, 0, 0.72),
+        0 0 34px rgba(var(--submenu-rgb, 255, 70, 85), 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.035);
+}
+
+/* Linha luminosa discreta no topo do submenu */
+.platform-menu::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 14%;
+    right: 14%;
+    height: 1px;
+    pointer-events: none;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(var(--submenu-rgb, 255, 70, 85), 0.85),
+        transparent
+    );
+    box-shadow: 0 0 16px rgba(var(--submenu-rgb, 255, 70, 85), 0.55);
+}
+
+/* Links: translucidez e brilho usam apenas a cor da plataforma */
+.platform-menu .platform-menu-links a {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid transparent;
+    background: rgba(255, 255, 255, 0.012);
+}
+
+.platform-menu .platform-menu-links a::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    background: linear-gradient(
+        100deg,
+        rgba(var(--submenu-rgb, 255, 70, 85), 0.18),
+        rgba(var(--submenu-rgb, 255, 70, 85), 0.055) 62%,
+        transparent
+    );
+    transform: translateX(-18%);
+    transition:
+        opacity 220ms var(--ease),
+        transform 320ms var(--ease);
+}
+
+.platform-menu .platform-menu-links a:hover {
+    color: var(--white);
+    padding-left: 18px;
+    background: rgba(var(--submenu-rgb, 255, 70, 85), 0.095);
+    border-color: rgba(var(--submenu-rgb, 255, 70, 85), 0.30);
+    box-shadow:
+        inset 3px 0 0 var(--submenu-accent, var(--accent)),
+        0 8px 22px rgba(var(--submenu-rgb, 255, 70, 85), 0.07);
+}
+
+.platform-menu .platform-menu-links a:hover::after {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.platform-menu .platform-menu-links a:hover::before {
+    border-color: var(--submenu-accent, var(--accent));
+}
+
+/* Destaque lateral também acompanha a plataforma, sem mudar nada fora do submenu */
+.platform-menu .feature-label {
+    color: var(--submenu-accent, var(--accent));
+    text-shadow: 0 0 12px rgba(var(--submenu-rgb, 255, 70, 85), 0.32);
+}
+
+.platform-menu .platform-feature {
+    border-left-color: rgba(var(--submenu-rgb, 255, 70, 85), 0.13);
+}
+
+.platform-menu .platform-feature img {
+    border-color: rgba(255, 255, 255, 0.11);
+}
+
+.platform-menu .platform-feature:hover img {
+    border-color: rgba(var(--submenu-rgb, 255, 70, 85), 0.72);
+    box-shadow:
+        0 16px 34px rgba(0, 0, 0, 0.60),
+        0 0 24px rgba(var(--submenu-rgb, 255, 70, 85), 0.22);
+}
+
+/* ============================================================
+   HERO
+============================================================ */
+
+.hero {
+
+    width: calc(100% - 2px);
+
+    height: 300px;
+
+    margin:
+        0 1px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    isolation: isolate;
+
+    background: #050508;
+
+    border-radius:
+        0
+        0
+        var(--radius-lg)
+        var(--radius-lg);
+
+}
+
+
+.carousel {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+}
+
+
+.slide {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform:
+        scale(1.03);
+
+    transition:
+        opacity 600ms ease,
+        visibility 600ms ease,
+        transform 800ms var(--ease);
+
+}
+
+
+.slide.active {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transform:
+        scale(1);
+
+}
+
+
+.slide .hero-image {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    filter: brightness(0.85);
+
+    transition:
+        transform 6s var(--ease);
+
+}
+
+
+.slide.active .hero-image {
+
+    transform:
+        scale(1.04);
+
+}
+
+
+.slide::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(5, 5, 7, 0.1) 0%,
+            transparent 45%,
+            rgba(5, 5, 7, 0.4) 70%,
+            rgba(5, 5, 7, 0.95) 100%
+        );
+
+}
+
+
+/* ============================================================
+   TEXTO HERO
+============================================================ */
+
+.slide-info {
+
+    position: absolute;
+
+    left: 24px;
+
+    bottom: 24px;
+
+    z-index: 5;
+
+    max-width: 320px;
+
+    opacity: 0;
+
+    transform:
+        translateY(12px);
+
+    transition:
+        opacity 600ms var(--ease) 150ms,
+        transform 600ms var(--ease) 150ms;
+
+}
+
+
+.slide.active .slide-info {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+
+}
+
+
+.slide-tag {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    min-height: 20px;
+
+    margin-bottom: 8px;
+
+    padding:
+        4px 9px;
+
+    border:
+        1px solid rgba(255, 70, 85, 0.4);
+
+    border-radius: var(--radius-sm);
+
+    background: rgba(255, 70, 85, 0.15);
+
+    color: var(--white);
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    backdrop-filter: blur(4px);
+
+}
+
+
+.slide-info h2 {
+
+    margin: 0 0 6px;
+
+    color: var(--white);
+
+    font-family:
+        'Impact',
+        'Arial Narrow Bold',
+        sans-serif;
+
+    font-size: 26px;
+
+    line-height: 1;
+
+    letter-spacing: -0.2px;
+
+    text-shadow: 0 4px 12px rgba(0,0,0,0.5);
+
+}
+
+
+.slide-info p {
+
+    color: var(--gray);
+
+    font-size: 10px;
+
+    font-weight: 400;
+
+    line-height: 1.4;
+
+}
+
+
+/* ============================================================
+   SETAS
+============================================================ */
+
+.hero-arrow {
+
+    position: absolute;
+
+    top: 50%;
+
+    z-index: 15;
+
+    width: 32px;
+
+    height: 32px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 0;
+
+    border:
+        1px solid var(--border-light);
+
+    border-radius: 50%;
+
+    background: rgba(10, 10, 15, 0.6);
+
+    backdrop-filter: blur(8px);
+
+    color: var(--white);
+
+    font-size: 16px;
+
+    transform:
+        translateY(-50%);
+
+    transition:
+        background 250ms var(--ease),
+        border-color 250ms var(--ease),
+        transform 250ms var(--ease),
+        box-shadow 250ms var(--ease);
+
+}
+
+
+.hero-arrow:hover {
+
+    background: var(--accent);
+
+    border-color: var(--accent);
+
+    box-shadow: 0 0 15px var(--accent-glow);
+
+    transform:
+        translateY(-50%)
+        scale(1.1);
+
+}
+
+
+.hero-arrow:active {
+
+    transform:
+        translateY(-50%)
+        scale(.95);
+
+}
+
+
+.hero-prev { left: 12px; }
+
+.hero-next { right: 12px; }
+
+
+/* ============================================================
+   DOTS
+============================================================ */
+
+.carousel-dots {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 12px;
+
+    z-index: 16;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    transform:
+        translateX(-50%);
+
+}
+
+
+.dot {
+
+    width: 6px;
+
+    height: 6px;
+
+    padding: 0;
+
+    border: 0;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.3);
+
+    transition:
+        width 300ms var(--ease),
+        background 300ms var(--ease),
+        transform 300ms var(--ease);
+
+}
+
+
+.dot.active {
+
+    width: 18px;
+
+    border-radius: 10px;
+
+    background: var(--accent);
+
+    box-shadow: 0 0 8px var(--accent-glow);
+
+}
+
+
+.dot:hover {
+
+    background: var(--white);
+
+    transform: scale(1.2);
+
+}
+
+
+/* ============================================================
+   SEÇÕES
+============================================================ */
+
+.section {
+
+    width: 100%;
+
+    padding:
+        24px
+        24px
+        0;
+
+}
+
+
+.section-header {
+
+    width: 100%;
+
+    min-height: 28px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+    margin-bottom: 16px;
+
+}
+
+
+.section-title {
+
+    flex-shrink: 0;
+
+    color: var(--white);
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+    line-height: 1;
+
+    letter-spacing: -0.4px;
+
+}
+
+
+.section-line {
+
+    flex: 1;
+
+    height: 2px;
+
+    margin-top: 2px;
+
+    border-radius: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--accent) 0%,
+            var(--accent-dim) 70%,
+            transparent 100%
+        );
+
+}
+
+
+/* ============================================================
+   GRID
+============================================================ */
+
+.cards {
+
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, minmax(0, 1fr));
+
+    gap: 20px;
+
+    align-items: start;
+
+}
+
+
+.game-card {
+
+    width: 100%;
+
+    min-width: 0;
+
+    position: relative;
+
+    display: flex;
+
+    flex-direction: column;
+
+    background: var(--black-2);
+
+    border-radius: var(--radius-sm);
+
+    overflow: hidden;
+
+    border: 1px solid var(--border);
+
+    transition: 
+        transform 300ms var(--ease),
+        border-color 300ms var(--ease),
+        box-shadow 300ms var(--ease);
+
+}
+
+
+.game-card:hover {
+
+    transform: translateY(-6px);
+
+    border-color: rgba(255, 255, 255, 0.15);
+
+    box-shadow: 
+        0 14px 28px rgba(0, 0, 0, 0.5),
+        0 0 20px rgba(255, 255, 255, 0.02);
+
+}
+
+
+.game-link {
+
+    width: 100%;
+
+    display: block;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background: #0f0f14;
+
+}
+
+
+.cover-image {
+
+    width: 100%;
+
+    aspect-ratio:
+        82 / 103;
+
+    display: block;
+
+    object-fit: cover;
+
+    background: #0f0f14;
+
+    transition:
+        transform 400ms var(--ease),
+        filter 400ms var(--ease);
+
+}
+
+
+.game-link::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.1) 0%,
+            transparent 50%,
+            rgba(0, 0, 0, 0.4) 100%
+        );
+
+    transition:
+        opacity 350ms var(--ease);
+
+}
+
+
+.game-card:hover .cover-image {
+
+    transform: scale(1.05);
+
+    filter: brightness(1.05);
+
+}
+
+
+.game-card:hover .game-link::after {
+
+    opacity: 1;
+
+}
+
+
+/* ============================================================
+   COMPRAR
+============================================================ */
+
+.buy {
+
+    width: 100%;
+
+    height: 34px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    background: var(--black-3);
+
+    color: var(--white-soft);
+
+    border: none;
+
+    border-top: 1px solid var(--border);
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.8px;
+
+    text-transform: uppercase;
+
+    transition:
+        background 250ms var(--ease),
+        color 250ms var(--ease),
+        box-shadow 250ms var(--ease);
+
+}
+
+
+/* Ícone CSS puro (Seta Dinâmica) substituindo o emoji antigo */
+.buy::before {
+
+    content: "";
+
+    width: 5px;
+
+    height: 5px;
+
+    border-top: 2px solid var(--accent);
+
+    border-right: 2px solid var(--accent);
+
+    transform: rotate(45deg);
+
+    display: inline-block;
+
+    transition:
+        border-color 250ms var(--ease),
+        transform 250ms var(--ease);
+
+}
+
+
+.buy:hover {
+
+    background: var(--accent);
+
+    color: var(--white);
+
+    box-shadow: 0 -4px 15px var(--accent-glow);
+
+}
+
+
+.buy:hover::before {
+
+    border-color: var(--white);
+
+    transform: rotate(45deg) scale(1.1) translate(1px, -1px);
+
+}
+
+
+/* ============================================================
+   LANÇAMENTOS
+============================================================ */
+
+.releases {
+
+    margin-top: 24px;
+
+}
+
+
+.release-logo {
+
+    width: 100%;
+
+    height: 44px;
+
+    display: block;
+
+    margin-top: 8px;
+
+    object-fit: contain;
+
+    object-position: center;
+
+    filter:
+        drop-shadow(0 4px 6px rgba(0,0,0,0.6))
+        brightness(0.9);
+
+    transition:
+        transform 300ms var(--ease),
+        filter 300ms var(--ease);
+
+}
+
+
+.gta-logo { height: 50px; }
+
+.resident-logo { height: 42px; }
+
+.forza-logo { height: 44px; }
+
+.wolverine-logo { height: 44px; }
+
+.pragmata-logo { height: 40px; }
+
+
+.release-card:hover .release-logo {
+
+    transform:
+        translateY(-4px)
+        scale(1.06);
+
+    filter:
+        drop-shadow(0 8px 15px rgba(255,70,85,0.2))
+        brightness(1.1);
+
+}
+
+
+/* ============================================================
+   USUÁRIO
+============================================================ */
+
+.user.icon {
+
+    width: 32px;
+
+    height: 32px;
+
+}
+
+
+.user.icon img {
+
+    width: 22px;
+
+    height: 22px;
+
+    display: block;
+
+    object-fit: contain;
+
+    filter: grayscale(1) brightness(1.4);
+
+    opacity: .8;
+
+    border-radius: 50%;
+
+    transition:
+        transform 250ms var(--ease),
+        opacity 250ms var(--ease),
+        filter 250ms var(--ease);
+
+}
+
+
+.user.icon:hover img {
+
+    opacity: 1;
+
+    filter: grayscale(0) brightness(1);
+
+    transform: scale(1.1) rotate(5deg);
+
+}
+
+
+/* ============================================================
+   ESPAÇO FINAL
+============================================================ */
+
+.footer-space {
+
+    height: 80px;
+
+}
+
+
+/* ============================================================
+   SCROLLBAR
+============================================================ */
+
+::-webkit-scrollbar {
+
+    width: 8px;
+
+}
+
+
+::-webkit-scrollbar-track {
+
+    background: var(--black);
+
+}
+
+
+::-webkit-scrollbar-thumb {
+
+    background: var(--gray-dark);
+
+    border-radius: 10px;
+
+    border: 2px solid var(--black);
+
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+
+    background: var(--accent);
+
+}
+
+
+/* ============================================================
+   TABLET / MOBILE
+============================================================ */
+
+@media (max-width: 600px) {
+
+
+    .header {
+
+        height: 58px;
+
+        padding: 0 12px;
+
+        gap: 12px;
+
+    }
+
+
+    .logo {
+
+        width: 64px;
+
+        min-width: 64px;
+
+        font-size: 12px;
+
+    }
+
+
+    .search-box {
+
+        max-width: none;
+
+    }
+
+
+    .search-box input {
+
+        height: 28px;
+
+        font-size: 10px;
+
+    }
+
+
+    .header-icons {
+
+        gap: 8px;
+
+    }
+
+
+    .icon {
+
+        width: 28px;
+
+        height: 28px;
+
+        font-size: 16px;
+
+    }
+
+
+    .platform-bar {
+
+        height: 42px;
+
+        gap: 20px;
+
+    }
+
+
+    .platform {
+
+        font-size: 9px;
+
+    }
+
+
+    .platform-logo {
+
+        width: 15px;
+
+        height: 15px;
+
+    }
+
+
+    /* ========================================================
+       SUBMENU MOBILE
+    ======================================================== */
+
+    .platform-menu {
+
+        width: 320px;
+
+        padding: 16px;
+
+    }
+
+
+    .platform-menu-content {
+
+        grid-template-columns:
+            1fr
+            100px;
+
+        gap: 16px;
+
+    }
+
+
+    .platform-menu-links a {
+
+        min-height: 38px;
+
+        font-size: 11px;
+
+    }
+
+
+    .platform-feature img {
+
+        width: 72px;
+
+        height: 104px;
+
+    }
+
+
+    .feature-name {
+
+        max-width: 90px;
+
+        font-size: 8px;
+
+    }
+
+
+    .hero {
+
+        height: 260px;
+
+    }
+
+
+    .slide-info {
+
+        left: 16px;
+
+        bottom: 16px;
+
+        max-width: 260px;
+
+    }
+
+
+    .slide-info h2 {
+
+        font-size: 22px;
+
+    }
+
+
+    .section {
+
+        padding-left: 16px;
+
+        padding-right: 16px;
+
+    }
+
+
+    .cards {
+
+        gap: 14px;
+
+    }
+
+
+    .section-title {
+
+        font-size: 18px;
+
+    }
+
+
+    .buy {
+
+        height: 32px;
+
+        font-size: 9px;
+
+    }
+
+}
+
+
+/* ============================================================
+   CELULARES PEQUENOS
+============================================================ */
+
+@media (max-width: 380px) {
+
+
+    .platform-bar {
+
+        gap: 14px;
+
+    }
+
+
+    .platform {
+
+        font-size: 8px;
+
+    }
+
+
+    .platform-menu {
+
+        width: 280px;
+
+    }
+
+
+    .platform-menu-content {
+
+        grid-template-columns:
+            1fr
+            85px;
+
+        gap: 10px;
+
+    }
+
+
+    .platform-feature img {
+
+        width: 64px;
+
+        height: 92px;
+
+    }
+
+
+    .feature-name {
+
+        font-size: 6px;
+
+    }
+
+
+    .section {
+
+        padding-left: 17px;
+
+        padding-right: 17px;
+
+    }
+
+
+    .cards {
+
+        gap: 12px;
+
+    }
+
+
+    .section-header {
+
+        gap: 11px;
+
+    }
+
+
+    .section-title {
+
+        font-size: 16px;
+
+    }
+
+
+    .buy {
+
+        height: 30px;
+
+        font-size: 7px;
+
+    }
+
+}
+
+
+/* ============================================================
+   DESKTOP
+============================================================ */
+
+@media (min-width: 601px) {
+
+
+    body {
+
+        background:
+            radial-gradient(
+                circle at 50% -10%,
+                #221630 0%,
+                #0b0914 35%,
+                var(--black) 75%
+            );
+
+    }
+
+
+    .site {
+
+        max-width: 1440px;
+
+        border-radius: 0;
+
+        box-shadow:
+            0 0 0 1px rgba(255,255,255,0.03),
+            0 30px 90px rgba(0,0,0,0.9);
+
+    }
+
+
+    .header {
+
+        height: 88px;
+
+        padding: 0 60px;
+
+        gap: 40px;
+
+    }
+
+
+    .logo {
+
+        width: 120px;
+
+        min-width: 120px;
+
+        font-size: 24px;
+
+    }
+
+
+    .search-box {
+
+        max-width: 640px;
+
+    }
+
+
+    .search-box input {
+
+        height: 44px;
+
+        padding: 0 20px;
+
+        border-radius: var(--radius-md);
+
+        font-size: 14px;
+
+    }
+
+
+    .header-icons {
+
+        gap: 20px;
+
+    }
+
+
+    .icon {
+
+        width: 44px;
+
+        height: 44px;
+
+        font-size: 22px;
+
+    }
+
+
+    .user.icon {
+
+        width: 44px;
+
+        height: 44px;
+
+    }
+
+
+    .user.icon img {
+
+        width: 28px;
+
+        height: 28px;
+
+    }
+
+
+    /* ========================================================
+       PLATAFORMAS DESKTOP
+    ======================================================== */
+
+    .platform-bar {
+
+        height: 56px;
+
+        gap: 80px;
+
+    }
+
+
+    .platform {
+
+        font-size: 14px;
+
+    }
+
+
+    .platform-logo {
+
+        width: 22px;
+
+        height: 22px;
+
+    }
+
+
+    /* ========================================================
+       SUBMENU DESKTOP
+    ======================================================== */
+
+    .platform-menu {
+
+        width: 500px;
+
+        padding: 24px;
+
+        border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+
+    }
+
+
+    .platform-menu-content {
+
+        grid-template-columns:
+            1fr
+            170px;
+
+        gap: 32px;
+
+    }
+
+
+    .platform-menu-links a {
+
+        min-height: 48px;
+
+        font-size: 14px;
+
+    }
+
+
+    .platform-feature img {
+
+        width: 120px;
+
+        height: 172px;
+
+    }
+
+
+    .feature-name {
+
+        max-width: 140px;
+
+        font-size: 11px;
+
+    }
+
+
+    /* ========================================================
+       HERO
+    ======================================================== */
+
+    .hero {
+
+        height: 560px;
+
+        border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+
+    }
+
+
+    .slide-info {
+
+        left: 60px;
+
+        bottom: 60px;
+
+        max-width: 550px;
+
+    }
+
+
+    .slide-info h2 {
+
+        font-size: 52px;
+
+    }
+
+
+    .slide-info p {
+
+        font-size: 14px;
+
+    }
+
+
+    .slide-tag {
+
+        min-height: 26px;
+
+        padding: 6px 12px;
+
+        font-size: 10px;
+
+    }
+
+
+    .hero-arrow {
+
+        width: 48px;
+
+        height: 48px;
+
+        font-size: 22px;
+
+    }
+
+
+    .hero-prev { left: 24px; }
+
+    .hero-next { right: 24px; }
+
+
+    /* ========================================================
+       SEÇÕES
+    ============================================================ */
+
+    .section {
+
+        padding: 40px 60px 0;
+
+    }
+
+
+    .section-header {
+
+        margin-bottom: 24px;
+
+    }
+
+
+    .section-title {
+
+        font-size: 26px;
+
+    }
+
+
+    .cards {
+
+        gap: 28px;
+
+    }
+
+
+    .buy {
+
+        height: 42px;
+
+        font-size: 12px;
+
+    }
+
+
+    .releases {
+
+        margin-top: 48px;
+
+    }
+
+
+    .release-logo {
+
+        height: 56px;
+
+    }
+
+}
+
+
+/* ============================================================
+   DESKTOP GRANDE
+============================================================ */
+
+@media (min-width: 1200px) {
+
+
+    .site { max-width: 1440px; }
+
+    .header { padding: 0 80px; }
+
+    .section { padding: 48px 80px 0; }
+
+    .hero { height: 600px; }
+
+    .slide-info h2 { font-size: 58px; }
+
+}
+
+
+/* ============================================================
+   ACESSIBILIDADE
+============================================================ */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+
+    outline: 2px solid var(--accent);
+
+    outline-offset: 4px;
+
+}
+
+
+/* ============================================================
+   FIM
+============================================================ */
